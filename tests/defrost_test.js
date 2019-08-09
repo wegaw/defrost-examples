@@ -1,6 +1,6 @@
 // In this example we will use axios to make requests to the API
 // Make sure you import axios
-// In Webpack
+// In ES6
 // import axios from 'axios'
 // In Node.JS
 // let axios = require('axios')
