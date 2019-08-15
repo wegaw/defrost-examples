@@ -1,0 +1,30 @@
+{
+  "name": "defrost-tutorial",
+  "version": "1.0.0",
+  "description": "Examples on using DeFROST services",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config webpack.config.js --mode production",
+    "start:dev": "webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/wegaw/defrost-tutorial.git"
+  },
+  "author": "WeGaw Ltd.",
+  "license": "MIT",
+  "homepage": "https://bitbucket.org/wegaw/defrost-tutorial#readme",
+  "dependencies": {
+    "leaflet": "^1.5.1",
+    "mapbox-gl": "^1.2.1",
+    "ol": "^5.3.3"
+  },
+  "devDependencies": {
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "^3.8.0"
+  }
+}

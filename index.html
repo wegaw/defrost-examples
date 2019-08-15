@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Using OpenLayers with Webpack</title>
+    <link rel="stylesheet" href="https://openlayers.org/en/latest/css/ol.css" type="text/css">
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+      html, body {
+        margin: 0;
+        height: 100%;
+      }
+      #ol-map {
+        height: 50%;
+        width: 100%;
+      }
+      #mapbox-map {
+        height: 50%;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="ol-map"></div>
+    <div id="mapbox-map"></div>
+    <script>
+      var defrost_tiles_url = 'http://maps.dev.defrost.ch/{z}/{x}/{y}.png';
+      var jwtAccessToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTY2NDgwOTM2LCJqdGkiOiJjZDdjNGIzMjgzOTM0NjAxODhlZWQ4YjYwYjBmYTU3ZSIsInVzZXJfaWQiOjN9.bmOuZF9OUcbICBqkahCZgg5Ikfboq2UpZAPOVNFeZvk';
+    </script>
+    <script src="./bundle.js"></script>
+  </body>
+</html>
