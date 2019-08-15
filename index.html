@@ -3,12 +3,23 @@
   <head>
     <meta charset="utf-8">
     <title>Using OpenLayers with Webpack</title>
-    <link rel="stylesheet" href="https://openlayers.org/en/latest/css/ol.css" type="text/css">
-    <link href='https://api.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="https://openlayers.org/en/latest/css/ol.css">
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" />
     <style>
       html, body {
         margin: 0;
         height: 100%;
+      }
+      .left-container{
+        width:50%;
+        height:100%;
+        float:left;
+      }
+      .right-container{
+        width:50%;
+        height:100%;
+        float:right;
       }
       #ol-map {
         height: 50%;
@@ -18,11 +29,20 @@
         height: 50%;
         width: 100%;
       }
+      #leaflet-map {
+        height: 50%;
+        width: 100%;
+      }
     </style>
   </head>
   <body>
-    <div id="ol-map"></div>
-    <div id="mapbox-map"></div>
+    <div class="left-container">
+        <div id="ol-map"></div>
+        <div id="mapbox-map"></div>
+    </div>
+    <div class="right-container">
+        <div id="leaflet-map"></div>
+    </div>
     <script>
       var defrost_tiles_url = 'http://maps.dev.defrost.ch/{z}/{x}/{y}.png';
       var jwtAccessToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTY2NDgwOTM2LCJqdGkiOiJjZDdjNGIzMjgzOTM0NjAxODhlZWQ4YjYwYjBmYTU3ZSIsInVzZXJfaWQiOjN9.bmOuZF9OUcbICBqkahCZgg5Ikfboq2UpZAPOVNFeZvk';
