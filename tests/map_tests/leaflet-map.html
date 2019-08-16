@@ -1,21 +1,35 @@
-import L from 'leaflet';
-import * as Util from 'leaflet/src/core/Util';
-import * as DomEvent from 'leaflet/src/dom/DomEvent';
+<!doctype html>
+<html lang="en">
+<meta charset="UTF-8">
 
-export class LMap {
-    constructor(target, defrost_maps_url, token){
-        this.target = target;
-        this.token = token;
-        this.snow_tiles_url = defrost_maps_url;
+<head>
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" type="text/css">
+    <style>
+        html, body {
+            margin: 0;
+            height: 100%;
+        }
 
-        // We will create a new TileLayer class in Leaflet which uses Authentication Bearer headers
-        // When extending Leaflet's TileLayer class, we override the createTile function
+        .map {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+    <title>DeFROST Leaflet example</title>
+</head>
+
+<body>
+    <div id="map" class="map"></div>
+    <script type="text/javascript">
+        var token = '<YOUR_ACCESS_TOKEN>';
+        var defrost_maps_url = 'http://maps.defrost.ch/{z}/{x}/{y}.png';
         L.TileLayer.headers = L.TileLayer.extend({
             createTile(coords, done) {
                 var tile = document.createElement('img');
 
-                DomEvent.on(tile, 'load', Util.bind(this._tileOnLoad, this, done, tile));
-                DomEvent.on(tile, 'error', Util.bind(this._tileOnError, this, done, tile));
+                L.DomEvent.on(tile, 'load', L.Util.bind(this._tileOnLoad, this, done, tile));
+                L.DomEvent.on(tile, 'error', L.Util.bind(this._tileOnError, this, done, tile));
 
                 if (this.options.crossOrigin || this.options.crossOrigin === '') {
                     tile.crossOrigin = this.options.crossOrigin === true ? '' : this.options.crossOrigin;
@@ -54,17 +68,19 @@ export class LMap {
         });
         L.tileLayer.headers = (url, options) => new L.TileLayer.headers(url, options);
 
-        this.map = L.map(this.target).setView([46.0207, 7.7491], 12);
+        map = L.map('map').setView([46.0207, 7.7491], 12);
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
-        }).addTo(this.map);
+        }).addTo(map);
 
         // Notice 
-        L.tileLayer.headers(this.snow_tiles_url, {
+        L.tileLayer.headers(defrost_maps_url, {
             attribution: 'Snow data &copy; <a href="https://www.defrost.ch/">WeGaw Ltd.</a>',
             crossOrigin: 'anonymous',
             opacity: 0.3
-        }).addTo(this.map);
-    }
-}
+        }).addTo(map);
+    </script>
+</body>
+
+</html>
