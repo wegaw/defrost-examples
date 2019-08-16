@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>DeFROST Map and API Tests</title>
+    <link rel="stylesheet" href="https://openlayers.org/en/latest/css/ol.css">
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" />
+    <style>
+      html, body {
+        margin: 0;
+        height: 100%;
+      }
+      .left-container{
+        width:50%;
+        height:100%;
+        float:left;
+      }
+      .right-container{
+        width:50%;
+        height:100%;
+        float:right;
+      }
+      #ol-map {
+        height: 50%;
+        width: 100%;
+      }
+      #mapbox-map {
+        height: 50%;
+        width: 100%;
+      }
+      #leaflet-map {
+        height: 50%;
+        width: 100%;
+      }
+      #api {
+        font-size: 12px;
+        height: 50%;
+        width: 100%;
+      }
+      #api p{
+        word-wrap: break-word;
+        white-space: pre-wrap;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="left-container">
+        <div id="ol-map"></div>
+        <div id="mapbox-map"></div>
+    </div>
+    <div class="right-container">
+        <div id="leaflet-map"></div>
+        <div id="api"></div>
+    </div>
+    <script src="./bundle.js"></script>
+  </body>
+</html>
