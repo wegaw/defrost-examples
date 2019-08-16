@@ -3,7 +3,7 @@ import mapboxgl from 'mapbox-gl';
 
 export class MBMap {
     constructor(target, defrost_maps_url, token) { 
-        mapboxgl.accessToken = 'pk.eyJ1Ijoid2VnYXciLCJhIjoiY2pvaWdwdDB5MDJlYjNrczE4eXJzM25ncCJ9.ZsEbOz5jY8rNJGb0RUM70Q';
+        mapboxgl.accessToken = process.env.MAPBOX_TOKEN;
         
         this.map = new mapboxgl.Map({
             container: target,

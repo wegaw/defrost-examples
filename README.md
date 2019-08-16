@@ -17,7 +17,18 @@ The test web app can be launched using npm.
 
 ## Getting started
 
-Setup your JWT Access and Refresh Tokens in the `.env.defaults` file. You can get them from [DeFROST Account Dashboard](https://dashboard.defrost.ch).
+Setup your JWT Access and Refresh Tokens in the `.env.defaults` file. You can get them from [DeFROST Account Dashboard](https://dashboard.defrost.ch). For the Mapbox GL JS example to work, you also need to set your [Mapbox access token](https://account.mapbox.com/).
+
+```sh
+# .env.deaults, safe to commit
+JWT_ACCESS_TOKEN=<YourJWTAccessTokenHere>
+JWT_REFRESH_TOKEN=<YourJWTRefreshTokenHere>
+
+DEFROST_MAPS_URL=http://maps.defrost.ch/{z}/{x}/{y}.png
+TOKEN_REFRESH_URL=http://api.defrost.ch/v1/token/refresh/
+
+MAPBOX_TOKEN=<YourMapboxTokenHere>
+```
 
 This app is served from `localhost:8080`, therefore, you also need to whitelist the `localhost` domain in your [dashboard](https://dashboard.defrost.ch) for any API or Tile request to work.
 
@@ -33,8 +44,6 @@ npm run start:dev
 This will trigger JavaScript bundle compilation using [webpack](https://webpack.js.org). Once the `Compiled successfully` message appears on your terminal, access the app at [localhost:8080](localhost:8080) from your browser.
 
 *The test web application demonstrates DeFROST Snow Cover tiles integration, as well as making an API request using JavaScript. For the Python and Curl API tests, launch the files directly with your Python interpreter or from your terminal.*
-
----
 
 ## License
 
