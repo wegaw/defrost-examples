@@ -6,46 +6,54 @@ import XYZ from 'ol/source/XYZ.js';
 import OSM from 'ol/source/OSM.js';
 
 
-function customLoader(tile, src) {
-    var client = new XMLHttpRequest();
-    client.open('GET', src);
-    client.responseType = "arraybuffer";
-    // Uncomment to pass authentication header
-    client.setRequestHeader("Authorization", "Bearer " + jwtAccessToken);
-    client.onload = function () {
-        var arrayBufferView = new Uint8Array(this.response);
-        var blob = new Blob([arrayBufferView], { type: 'image/png' });
-        var urlCreator = window.URL || window.webkitURL;
-        var imageUrl = urlCreator.createObjectURL(blob);
-        tile.getImage().src = imageUrl;
-    };
-    client.send();
-}
+export class OLMap {
+    constructor(target, defrost_maps_url, token) { 
+        this.target = target;
+        this.token = token;
+        this.snow_tiles_url = defrost_maps_url;
 
-export var ol_map = new Map({
-    target: 'ol-map',
-    layers: [
-        new TileLayer({
-            source: new OSM()
-        }),
-        new TileLayer({
-            source: new XYZ({
-                url: defrost_tiles_url,
-                tileLoadFunction: customLoader,
-                crossOrigin: 'anonymous',
-                attributions: 'Snow data &copy; <a href="https://www.defrost.ch/">WeGaw Ltd.</a>',
+        this.map = new Map({
+            target: this.target,
+            layers: [
+                new TileLayer({
+                    source: new OSM()
+                }),
+                new TileLayer({
+                    source: new XYZ({
+                        url: defrost_maps_url,
+                        tileLoadFunction: (tile, src) => {
+                            var client = new XMLHttpRequest();
+                            client.open('GET', src);
+                            client.responseType = "arraybuffer";
+                            // Uncomment to pass authentication header
+                            client.setRequestHeader("Authorization", "Bearer " + this.token);
+                            client.onload = function () {
+                                var arrayBufferView = new Uint8Array(this.response);
+                                var blob = new Blob([arrayBufferView], { type: 'image/png' });
+                                var urlCreator = window.URL || window.webkitURL;
+                                var imageUrl = urlCreator.createObjectURL(blob);
+                                tile.getImage().src = imageUrl;
+                            };
+                            client.send();
+                        },
+                        crossOrigin: 'anonymous',
+                        attributions: 'Snow data &copy; <a href="https://www.defrost.ch/">WeGaw Ltd.</a>',
+                    }),
+                    opacity: 0.3
+                })
+            ],
+            controls: defaultControls({
+                attributionOptions:{
+                    collapsed: false,
+                    collapsible:false
+                }
             }),
-            opacity: 0.3
-        })
-    ],
-    controls: defaultControls({
-        attributionOptions:{
-            collapsed: false,
-            collapsible:false
-        }
-    }),
-    view: new View({
-        center: [862625.87, 5783667.03],
-        zoom: 12,
-    })
-});
+            view: new View({
+                center: [862625.87, 5783667.03],
+                zoom: 12,
+            })
+        });
+    }
+} 
+
+

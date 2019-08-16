@@ -18,6 +18,8 @@
   "license": "MIT",
   "homepage": "https://bitbucket.org/wegaw/defrost-tutorial#readme",
   "dependencies": {
+    "dotenv-defaults": "^1.0.2",
+    "dotenv-webpack": "^1.7.0",
     "leaflet": "^1.5.1",
     "load-google-maps-api": "^2.0.1",
     "mapbox-gl": "^1.2.1",
