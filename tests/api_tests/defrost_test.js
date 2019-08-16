@@ -7,41 +7,59 @@
 // In the browser load axios in a script tag. For a quickstart you can use the CDN below
 // <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-// URLs used in this example
-let DEFROST_SAMPLE_API_URL = 'http://api.dev.defrost.ch/v1/snow-covers/'
-let DEFROST_TOKEN_REFRESH_URL = 'http://api.dev.defrost.ch/v1/token/refresh/'
-// your API tokens
-let DEFROST_JWT_ACCESS_TOKEN = 'YOUR ACCESS TOKEN GOES HERE'
-let DEFROST_JWT_REFRESH_TOKEN = 'YOUR REFRESH TOKEN GOES HERE'
+import axios from 'axios'
 
-async function test () {
-    // if necessary, this is how you would refresh your access token
-    let response = await axios
-        .post(DEFROST_TOKEN_REFRESH_URL, {
-            refresh: DEFROST_JWT_REFRESH_TOKEN
+// URLs used in this example
+let SAMPLE_API_URL = 'http://api.dev.defrost.ch/v1/snow-covers/'
+let TOKEN_REFRESH_URL = process.env.TOKEN_REFRESH_URL
+
+
+export class APITester{
+    constructor(accessToken, refreshToken){
+        this.token = accessToken;
+        this.refreshToken = refreshToken;
+    }
+
+    async test(){
+        // if necessary, this is how you would refresh your access token
+        let response = await axios
+        .post(TOKEN_REFRESH_URL, {
+            refresh: this.refreshToken
         })
 
-    if(response.status == 200) {
-        console.info('Your new access token is ', response.data['access'])
-        DEFROST_JWT_ACCESS_TOKEN = response.data['access']
-    }
-    
-    // make sure you always include your access token in every request
-    axios.interceptors.request.use( config => {
-        config.headers.Authorization = 'Bearer ' + DEFROST_JWT_ACCESS_TOKEN
-        return config
-    }, error => {
-        return Promise.reject(error)
-    })
-    
-    // // now you are ready to make an API call
-    response = await axios.get(DEFROST_SAMPLE_API_URL)
-    if( response.status == 200) {
-        console.info(response.statusText,'(',response.status,') ',response.data)
-        return response.data
-    }
+        if(response.status == 200) {
+            console.info('Your new access token is ', response.data['access'])
+            this.token = response.data['access']
+            // Display in HTML
+            var node = document.createElement("P");              
+            var textnode = document.createTextNode('Refresh token request\nYour new access token: ' + this.token);        
+            node.appendChild(textnode);                              
+            document.getElementById("api").appendChild(node);   
+        }
 
-    return response.status
+        // make sure you always include your access token in every request
+        axios.interceptors.request.use( config => {
+            config.headers.Authorization = 'Bearer ' + this.token
+            return config
+        }, error => {
+            return Promise.reject(error)
+        })
+
+        // // now you are ready to make an API call
+        response = await axios.get(SAMPLE_API_URL)
+        if( response.status == 200) {
+            console.info(response.statusText,'(',response.status,') ',response.data)
+            // Display in HTML
+            var node = document.createElement("P");    
+            var msg = 'Request to ' + SAMPLE_API_URL
+            msg += '\nStatus: ' + response.statusText +' ('+response.status+')';
+            msg += '\nData:\n' + JSON.stringify(response.data);
+            var textnode = document.createTextNode(msg);        
+            node.appendChild(textnode);                              
+            document.getElementById("api").appendChild(node);   
+            return response.data
+        }
+
+        return response.status
+    }
 }
-
-test()
