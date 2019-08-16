@@ -19,6 +19,7 @@
   "homepage": "https://bitbucket.org/wegaw/defrost-tutorial#readme",
   "dependencies": {
     "leaflet": "^1.5.1",
+    "load-google-maps-api": "^2.0.1",
     "mapbox-gl": "^1.2.1",
     "ol": "^5.3.3"
   },
