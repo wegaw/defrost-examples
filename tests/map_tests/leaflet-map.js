@@ -38,7 +38,6 @@ export class LMap {
                 var client = new XMLHttpRequest();
                 client.open('GET', url);
                 client.responseType = "arraybuffer";
-                // Uncomment to pass authentication header
                 client.setRequestHeader("Authorization", "Bearer " + token);
                 client.onload = function () {
                     var arrayBufferView = new Uint8Array(this.response);
