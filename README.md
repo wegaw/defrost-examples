@@ -30,8 +30,6 @@ TOKEN_REFRESH_URL=http://api.defrost.ch/v1/token/refresh/
 MAPBOX_TOKEN=<YourMapboxTokenHere>
 ```
 
-This app is served from `localhost:8080`, therefore, you also need to whitelist the `localhost` domain in your [dashboard](https://dashboard.defrost.ch) for any API or Tile request to work.
-
 ## Launching the test app
 
 When ready, install dependencies and run the app with the following commands:
