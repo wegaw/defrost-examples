@@ -24,8 +24,8 @@ Setup your JWT Access and Refresh Tokens in the `.env.defaults` file. You can ge
 JWT_ACCESS_TOKEN=<YourJWTAccessTokenHere>
 JWT_REFRESH_TOKEN=<YourJWTRefreshTokenHere>
 
-DEFROST_MAPS_URL=http://maps.defrost.ch/{z}/{x}/{y}.png
-TOKEN_REFRESH_URL=http://api.defrost.ch/v1/token/refresh/
+DEFROST_MAPS_URL=https://maps.defrost.ch/{z}/{x}/{y}.png
+TOKEN_REFRESH_URL=https://api.defrost.ch/v1/token/refresh/
 
 MAPBOX_TOKEN=<YourMapboxTokenHere>
 ```
