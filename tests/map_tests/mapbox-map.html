@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<meta charset="UTF-8">
+
+<head>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        html, body {
+            margin: 0;
+            height: 100%;
+        }
+
+        #map {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+    <title>DeFROST Mapbox example</title>
+</head>
+
+<body>
+    <div id='map'></div>
+    <script>
+        var token = '<YOUR_ACCESS_TOKEN>';
+        var defrost_maps_url = 'http://maps.defrost.ch/{z}/{x}/{y}.png';
+        mapboxgl.accessToken = '<YOUR_MAPBOX_TOKEN>';
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v11',
+            center: [7.7491, 46.0207],
+            zoom: 11,
+            transformRequest: (url, resourceType) => {
+                if (resourceType === 'Tile' && url.startsWith(defrost_maps_url.split('/{z}/{x}/{y}.png')[0])) {
+                    return {
+                        url: url,
+                        headers: { 'Authorization': 'Bearer ' + token },
+                    }
+                }
+            }
+        });
+
+        map.on('load', function(){
+            var dfTileLayer = {
+                "id": 'df',
+                "type": "raster",
+                "source": {
+                    "type": "raster",
+                    "tiles": [defrost_maps_url,],
+                    "tileSize": 256,
+                    "maxzoom": 13
+                },
+                "paint": {
+                    "raster-opacity": 0.3,
+                    "raster-resampling": "linear"
+                }
+            };
+            this.addLayer(dfTileLayer);
+        });
+    </script>
+</body>
+
+</html>
