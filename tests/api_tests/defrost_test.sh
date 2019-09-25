@@ -1,7 +1,7 @@
 #! /bin/bash
 # URLs used in this example
-export API_URL="http://api.defrost.ch/v1/snow-covers/"
-export REFRESH_URL="http://api.defrost.ch/v1/token/refresh/"
+export API_URL="https://api.defrost.ch/v1/snow-point/45.9766/7.6585/"
+export REFRESH_URL="https://api.defrost.ch/v1/token/refresh/"
 # your API tokens
 export JWT_ACCESS_TOKEN="YOUR ACCESS TOKEN GOES HERE"
 export JWT_REFRESH_TOKEN="YOUR REFRESH TOKEN GOES HERE"
