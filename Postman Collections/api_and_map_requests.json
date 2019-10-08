@@ -1,0 +1,322 @@
+{
+  "info": {
+    "_postman_id": "e10068ed-825a-4a75-a9d3-2afa2b7921c0",
+    "name": "[Prod] DeFROST Services Health",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create API Token - Normal user",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "f1fc601e-3d06-401b-8d36-2dddf282ff1a",
+            "exec": [
+              "const response = pm.response.json();",
+              "",
+              "pm.environment.set(\"access_token\", response.access);",
+              "pm.environment.set(\"refresh_token\", response.refresh);",
+              "",
+              "pm.test(\"Response has valid JSON structure\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(typeof(jsonData.access) === \"string\").to.be.true;",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "7430e2ba-23ab-42ee-b0f3-6dfc55fc3581",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n\"username\": \"wegaw-prod\",\r\n\"password\": \"w3g4w!6666\"\r\n}"
+        },
+        "url": "https://api.defrost.ch/v1/token/"
+      },
+      "response": []
+    },
+    {
+      "name": "Snow for point - Success",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "101c1c29-5e29-403f-960a-4b3afa0b9aa4",
+            "exec": [
+              "pm.test(\"Response has valid JSON structure\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(typeof(jsonData.snow) === \"boolean\").to.be.true;\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response time is less than 1s\",function(){\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "f78a1b38-a9ca-4af3-87fc-2e188574a035",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": {
+            "token": "{{access_token}}"
+          }
+        },
+        "method": "GET",
+        "header": [],
+        "url": "https://api.defrost.ch/v1/snow-point/45.9766/7.6585/"
+      },
+      "response": []
+    },
+    {
+      "name": "Snow for point - Bad Request",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "101c1c29-5e29-403f-960a-4b3afa0b9aa4",
+            "exec": [
+              "pm.test(\"Status code is 400 - Bad Request\", function () {\r",
+              "    pm.response.to.have.status(400);\r",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "16c60347-44c8-461b-9523-d8a034ccb817",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": {
+            "token": "{{access_token}}"
+          }
+        },
+        "method": "GET",
+        "header": [],
+        "url": "https://api.defrost.ch/v1/snow-point/455.9766/7.6585/"
+      },
+      "response": []
+    },
+    {
+      "name": "Snow for point - Unauthorized",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "101c1c29-5e29-403f-960a-4b3afa0b9aa4",
+            "exec": [
+              "pm.test(\"Status code is 401 - Unauthorized\", function () {\r",
+              "    pm.response.to.have.status(401);\r",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "f315e93f-bc1e-47ec-8614-51cdc5f17c68",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": {
+            "token": "{{access_token}}a"
+          }
+        },
+        "method": "GET",
+        "header": [],
+        "url": "https://api.defrost.ch/v1/snow-point/45.9766/7.6585/"
+      },
+      "response": []
+    },
+    {
+      "name": "Map tile - Success",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "d2082b0b-49ca-49cb-94f7-af3a1920eeb8",
+            "exec": [
+              "pm.test(\"Response time is less than 1s\",function(){\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "ac16d4df-0a2c-4492-9893-b52944f4dade",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": {
+            "token": "{{access_token}}"
+          }
+        },
+        "method": "GET",
+        "header": [],
+        "url": "https://maps.defrost.ch/13/4269/2914.png"
+      },
+      "response": []
+    },
+    {
+      "name": "Map tile - Unauthorized",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "7f2d7e14-90b3-4e43-9f0b-0e846a3164a0",
+            "exec": [
+              "pm.test(\"Status code is 401 - Unauthorized\", function () {\r",
+              "    pm.response.to.have.status(401);\r",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "09da9f90-c59b-4b70-bc56-4271e7df73d1",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": {
+            "token": "{{access_token}}a"
+          }
+        },
+        "method": "GET",
+        "header": [],
+        "url": "https://maps.defrost.ch/13/4269/2914.png"
+      },
+      "response": []
+    },
+    {
+      "name": "Create API Token - DMO user",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "f1fc601e-3d06-401b-8d36-2dddf282ff1a",
+            "exec": [
+              "const response = pm.response.json();",
+              "",
+              "pm.environment.set(\"dmo_access_token\", response.access);",
+              "pm.environment.set(\"dmo_refresh_token\", response.refresh);",
+              "",
+              "pm.test(\"Response has valid JSON structure\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(typeof(jsonData.access) === \"string\").to.be.true;",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "93129da9-2386-45c7-b19b-26752f09790d",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n\"username\": \"wegaw-dmo-prod\",\r\n\"password\": \"w3g4w!6666\"\r\n}"
+        },
+        "url": "https://api.defrost.ch/v1/token/"
+      },
+      "response": []
+    },
+    {
+      "name": "DMO Map tile - Success",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "4aa3c83a-2b24-4ffd-8ded-b0693b4ef598",
+            "exec": [
+              "pm.test(\"Response time is less than 1s\",function(){\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "0df4e8d4-5c56-4380-bc31-828eff622182",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": {
+            "token": "{{dmo_access_token}}"
+          }
+        },
+        "method": "GET",
+        "header": [],
+        "url": "https://maps.defrost.ch/13/4258/2908.png"
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "bcd7ac82-66d4-4798-a45d-4101f447679d",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "f491d3fb-e058-4a34-bc2d-a481f531c180",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ]
+}
