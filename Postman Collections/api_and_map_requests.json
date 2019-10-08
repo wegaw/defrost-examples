@@ -43,7 +43,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n\"username\": \"wegaw-prod\",\r\n\"password\": \"w3g4w!6666\"\r\n}"
+          "raw": "{\r\n\"username\": \"{{username}}\",\r\n\"password\": \"{{password}}\"\r\n}"
         },
         "url": "https://api.defrost.ch/v1/token/"
       },
