@@ -50,50 +50,6 @@
       "response": []
     },
     {
-      "name": "Create API Token - Normal user Copy",
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "id": "f1fc601e-3d06-401b-8d36-2dddf282ff1a",
-            "exec": [
-              "const response = pm.response.json();",
-              "",
-              "pm.environment.set(\"access_token\", response.access);",
-              "pm.environment.set(\"refresh_token\", response.refresh);",
-              "",
-              "pm.test(\"Response has valid JSON structure\", function () {",
-              "    var jsonData = pm.response.json();",
-              "    pm.expect(typeof(jsonData.access) === \"string\").to.be.true;",
-              "});"
-            ],
-            "type": "text/javascript"
-          }
-        }
-      ],
-      "_postman_id": "ac5b8956-d75d-47da-908f-4d1b5928da08",
-      "protocolProfileBehavior": {
-        "disableBodyPruning": true
-      },
-      "request": {
-        "method": "POST",
-        "header": [
-          {
-            "key": "Content-Type",
-            "name": "Content-Type",
-            "value": "application/json",
-            "type": "text"
-          }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n\"username\": \"{{username}}\",\r\n\"password\": \"{{password}}\"\r\n}"
-        },
-        "url": "https://api.defrost.ch/v1/token/"
-      },
-      "response": []
-    },
-    {
       "name": "Snow for point - Success",
       "event": [
         {
