@@ -121,6 +121,39 @@
       "response": []
     },
     {
+      "name": "Snow for point - Bad Request Copy",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "101c1c29-5e29-403f-960a-4b3afa0b9aa4",
+            "exec": [
+              "pm.test(\"Status code is 400 - Bad Request\", function () {\r",
+              "    pm.response.to.have.status(400);\r",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "03379d34-9774-40c9-b91d-1a30505942b6",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": {
+            "token": "{{access_token}}"
+          }
+        },
+        "method": "GET",
+        "header": [],
+        "url": "https://api.defrost.ch/v1/snow-point/455.9766/7.6585/"
+      },
+      "response": []
+    },
+    {
       "name": "Snow for point - Unauthorized",
       "event": [
         {
@@ -293,39 +326,6 @@
         "method": "GET",
         "header": [],
         "url": "https://maps.defrost.ch/13/4258/2908.png"
-      },
-      "response": []
-    },
-    {
-      "name": "Snow for point - Bad Request Copy",
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "id": "101c1c29-5e29-403f-960a-4b3afa0b9aa4",
-            "exec": [
-              "pm.test(\"Status code is 400 - Bad Request\", function () {\r",
-              "    pm.response.to.have.status(400);\r",
-              "});"
-            ],
-            "type": "text/javascript"
-          }
-        }
-      ],
-      "_postman_id": "03379d34-9774-40c9-b91d-1a30505942b6",
-      "protocolProfileBehavior": {
-        "disableBodyPruning": true
-      },
-      "request": {
-        "auth": {
-          "type": "bearer",
-          "bearer": {
-            "token": "{{access_token}}"
-          }
-        },
-        "method": "GET",
-        "header": [],
-        "url": "https://api.defrost.ch/v1/snow-point/455.9766/7.6585/"
       },
       "response": []
     }
