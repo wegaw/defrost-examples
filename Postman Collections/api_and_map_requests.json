@@ -295,44 +295,6 @@
         "url": "https://maps.defrost.ch/13/4258/2908.png"
       },
       "response": []
-    },
-    {
-      "name": "Snow for point - Success Copy",
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "id": "101c1c29-5e29-403f-960a-4b3afa0b9aa4",
-            "exec": [
-              "pm.test(\"Response has valid JSON structure\", function () {\r",
-              "    var jsonData = pm.response.json();\r",
-              "    pm.expect(typeof(jsonData.snow) === \"boolean\").to.be.true;\r",
-              "});\r",
-              "\r",
-              "pm.test(\"Response time is less than 1s\",function(){\r",
-              "    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
-              "});"
-            ],
-            "type": "text/javascript"
-          }
-        }
-      ],
-      "_postman_id": "d060eff3-a243-4970-aaca-37535d23c9c5",
-      "protocolProfileBehavior": {
-        "disableBodyPruning": true
-      },
-      "request": {
-        "auth": {
-          "type": "bearer",
-          "bearer": {
-            "token": "{{access_token}}"
-          }
-        },
-        "method": "GET",
-        "header": [],
-        "url": "https://api.defrost.ch/v1/snow-point/45.9766/7.6585/"
-      },
-      "response": []
     }
   ],
   "event": [
