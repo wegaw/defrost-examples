@@ -10,7 +10,7 @@
 import axios from 'axios'
 
 // URLs used in this example
-let SAMPLE_API_URL = 'https://api.defrost.ch/v1/snow-point/45.9766/7.6585/'
+let SAMPLE_API_URL = 'https://api.defrost.io/v1/snow-point/45.9766/7.6585/'
 let TOKEN_REFRESH_URL = process.env.TOKEN_REFRESH_URL
 
 

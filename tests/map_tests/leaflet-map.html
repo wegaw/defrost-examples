@@ -23,7 +23,7 @@
     <div id="map" class="map"></div>
     <script type="text/javascript">
         var token = '<YOUR_ACCESS_TOKEN>';
-        var defrost_maps_url = 'http://maps.defrost.ch/{z}/{x}/{y}.png';
+        var defrost_maps_url = 'http://maps.defrost.io/{z}/{x}/{y}.png';
         L.TileLayer.headers = L.TileLayer.extend({
             createTile(coords, done) {
                 var tile = document.createElement('img');
@@ -76,7 +76,7 @@
 
         // Notice 
         L.tileLayer.headers(defrost_maps_url, {
-            attribution: 'Snow data &copy; <a href="https://www.defrost.ch/">WeGaw Ltd.</a>',
+            attribution: 'Snow data &copy; <a href="https://www.defrost.io/">WeGaw Ltd.</a>',
             crossOrigin: 'anonymous',
             opacity: 0.3
         }).addTo(map);
