@@ -62,7 +62,7 @@ export class LMap {
 
         // Notice 
         L.tileLayer.headers(this.snow_tiles_url, {
-            attribution: 'Snow data &copy; <a href="https://www.defrost.ch/">WeGaw Ltd.</a>',
+            attribution: 'Snow data &copy; <a href="https://www.defrost.io/">WeGaw Ltd.</a>',
             crossOrigin: 'anonymous',
             opacity: 0.3
         }).addTo(this.map);

@@ -2,8 +2,8 @@
 import requests
 
 # URLs used in this example
-SAMPLE_API_URL = 'https://api.defrost.ch/v1/snow-point/45.9766/7.6585/'
-TOKEN_REFRESH_URL = 'https://api.defrost.ch/v1/token/refresh/'
+SAMPLE_API_URL = 'https://api.defrost.io/v1/snow-point/45.9766/7.6585/'
+TOKEN_REFRESH_URL = 'https://api.defrost.io/v1/token/refresh/'
 # your API tokens
 JWT_ACCESS_TOKEN = 'YOUR ACCESS TOKEN GOES HERE'
 JWT_REFRESH_TOKEN = 'YOUR REFRESH TOKEN GOES HERE'

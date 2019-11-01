@@ -37,7 +37,7 @@ export class OLMap {
                             client.send();
                         },
                         crossOrigin: 'anonymous',
-                        attributions: 'Snow data &copy; <a href="https://www.defrost.ch/">WeGaw Ltd.</a>',
+                        attributions: 'Snow data &copy; <a href="https://www.defrost.io/">WeGaw Ltd.</a>',
                     }),
                     opacity: 0.3
                 })
