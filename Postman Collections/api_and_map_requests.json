@@ -155,6 +155,25 @@
     },
     {
       "name": "Snow for point Global - success",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "dfd64c44-5ca1-4e44-b598-d5efe255de64",
+            "exec": [
+              "pm.test(\"Response has valid JSON structure\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(typeof(jsonData.snow) === \"boolean\").to.be.true;\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response time is less than 1s\",function(){\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
       "_postman_id": "2aa08787-36b4-4a34-a597-0bc0292fc487",
       "protocolProfileBehavior": {
         "disableBodyPruning": true
