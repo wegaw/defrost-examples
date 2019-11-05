@@ -154,6 +154,25 @@
       "response": []
     },
     {
+      "name": "Snow for point Global - success",
+      "_postman_id": "2aa08787-36b4-4a34-a597-0bc0292fc487",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": {
+            "token": "{{access_token}}"
+          }
+        },
+        "method": "GET",
+        "header": [],
+        "url": "https://api.defrost.ch/v1/snow-point/63.0/-45.0/"
+      },
+      "response": []
+    },
+    {
       "name": "Map tile - Success",
       "event": [
         {
@@ -344,25 +363,6 @@
         "method": "GET",
         "header": [],
         "url": "https://maps.defrost.ch/13/4258/2908.png"
-      },
-      "response": []
-    },
-    {
-      "name": "Snow for point Global - success",
-      "_postman_id": "2aa08787-36b4-4a34-a597-0bc0292fc487",
-      "protocolProfileBehavior": {
-        "disableBodyPruning": true
-      },
-      "request": {
-        "auth": {
-          "type": "bearer",
-          "bearer": {
-            "token": "{{access_token}}"
-          }
-        },
-        "method": "GET",
-        "header": [],
-        "url": "https://api.defrost.ch/v1/snow-point/63.0/-45.0/"
       },
       "response": []
     }
