@@ -10,7 +10,7 @@
 
 Demonstrates integration of [DeFROST](https://defrost.io) Snow Cover tiles and API in supported platforms:
 
-- OpenLayers 5.3, Leaflet 1.5 and Mapbox GL JS 1.2 for displaying snow cover tiles
+- OpenLayers 5.3, Leaflet 1.5, Mapbox GL JS 1.2 and Google Maps JS API V3 for displaying snow cover tiles
 - JavaScript, Python and Curl for API requests
 
 The test web app can be launched using npm.
