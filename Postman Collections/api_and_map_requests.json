@@ -83,7 +83,7 @@
         },
         "method": "GET",
         "header": [],
-        "url": "https://api.defrost.ch/v1/snow-point/45.9766/7.6585/"
+        "url": "https://api.defrost.io/v1/snow-point/45.9766/7.6585/"
       },
       "response": []
     },
@@ -348,7 +348,7 @@
           "mode": "raw",
           "raw": "{\r\n\"username\": \"{{dmo_username}}\",\r\n\"password\": \"{{dmo_password}}\"\r\n}"
         },
-        "url": "https://api.defrost.ch/v1/token/"
+        "url": "https://api.defrost.io/v1/token/"
       },
       "response": []
     },
