@@ -116,7 +116,7 @@
         },
         "method": "GET",
         "header": [],
-        "url": "https://api.defrost.ch/v1/snow-point/455.9766/7.6585/"
+        "url": "https://api.defrost.io/v1/snow-point/455.9766/7.6585/"
       },
       "response": []
     },
@@ -149,7 +149,7 @@
         },
         "method": "GET",
         "header": [],
-        "url": "https://api.defrost.ch/v1/snow-point/45.9766/7.6585/"
+        "url": "https://api.defrost.io/v1/snow-point/45.9766/7.6585/"
       },
       "response": []
     },
