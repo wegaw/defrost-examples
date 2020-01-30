@@ -45,7 +45,7 @@
           "mode": "raw",
           "raw": "{\r\n\"username\": \"{{username}}\",\r\n\"password\": \"{{password}}\"\r\n}"
         },
-        "url": "https://api.defrost.ch/v1/token/"
+        "url": "https://api.defrost.io/v1/token/"
       },
       "response": []
     },
@@ -348,7 +348,7 @@
           "mode": "raw",
           "raw": "{\r\n\"username\": \"{{dmo_username}}\",\r\n\"password\": \"{{dmo_password}}\"\r\n}"
         },
-        "url": "https://api.defrost.ch/v1/token/"
+        "url": "https://api.defrost.io/v1/token/"
       },
       "response": []
     },
