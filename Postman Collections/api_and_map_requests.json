@@ -447,7 +447,7 @@
         },
         "method": "GET",
         "header": [],
-        "url": "https://maps.defrost.io/13/4258/2908.png"
+        "url": "https://api.defrost.io/v1/raster-download/alps/"
       },
       "response": []
     }
