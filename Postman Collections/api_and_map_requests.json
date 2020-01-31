@@ -419,7 +419,7 @@
       "response": []
     },
     {
-      "name": "Force global map download Copy",
+      "name": "Force alps map download",
       "event": [
         {
           "listen": "test",
