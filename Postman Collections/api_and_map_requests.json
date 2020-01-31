@@ -417,6 +417,39 @@
         "url": "https://maps.defrost.io/13/4258/2908.png"
       },
       "response": []
+    },
+    {
+      "name": "Force global map download Copy",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "4aa3c83a-2b24-4ffd-8ded-b0693b4ef598",
+            "exec": [
+              "pm.test(\"Response time is less than 1s\",function(){\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "9e0ce01c-232a-43ca-b905-f014e6b3a1d3",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": {
+            "token": "{{dmo_access_token}}"
+          }
+        },
+        "method": "GET",
+        "header": [],
+        "url": "https://maps.defrost.io/13/4258/2908.png"
+      },
+      "response": []
     }
   ],
   "event": [
