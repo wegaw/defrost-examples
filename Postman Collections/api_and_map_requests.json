@@ -386,7 +386,7 @@
       "response": []
     },
     {
-      "name": "DMO Map tile - Success Copy",
+      "name": "Force global map download",
       "event": [
         {
           "listen": "test",
