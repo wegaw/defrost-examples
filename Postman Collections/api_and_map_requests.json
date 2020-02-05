@@ -386,39 +386,6 @@
       "response": []
     },
     {
-      "name": "Force global map download",
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "id": "4aa3c83a-2b24-4ffd-8ded-b0693b4ef598",
-            "exec": [
-              "pm.test(\"Response time is less than 1s\",function(){\r",
-              "    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
-              "});"
-            ],
-            "type": "text/javascript"
-          }
-        }
-      ],
-      "_postman_id": "840066e8-ac2f-4afd-88ad-86ed2dc84606",
-      "protocolProfileBehavior": {
-        "disableBodyPruning": true
-      },
-      "request": {
-        "auth": {
-          "type": "bearer",
-          "bearer": {
-            "token": "{{access_token}}"
-          }
-        },
-        "method": "GET",
-        "header": [],
-        "url": "https://api.defrost.io/v1/raster-download/global_sd/"
-      },
-      "response": []
-    },
-    {
       "name": "Force alps map download",
       "event": [
         {
@@ -442,7 +409,7 @@
         "auth": {
           "type": "bearer",
           "bearer": {
-            "token": "{{dmo_access_token}}"
+            "token": "{{access_token}}"
           }
         },
         "method": "GET",
